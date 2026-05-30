@@ -11,12 +11,17 @@ namespace instance_variables
         long accountnumber;
         double balance;
         static string accountname = "Axix bank";
-
-
-        public void display(int accountnumber,double balance)
+        public bankaccount(long accountnumber,double balance)
         {
-            accountnumber = accountnumber;
-            balance = balance;
+            this.accountnumber = accountnumber;
+            this.balance = balance;
+        }
+
+
+        public void display()
+        {
+            //accountnumber = accountnumber;
+           // balance = balance;
             Console.WriteLine("accont number is:" + accountnumber);
             Console.WriteLine("balance is:" + balance);
             Console.WriteLine("accont name is:" + accountname);
@@ -24,27 +29,30 @@ namespace instance_variables
         }
         public void deposit(double amount)
         {
-            if (amount > 0)
+            if (amount >= 0)
             {
                 balance += amount;
+                Console.WriteLine("balance after deposit is:" + balance);
             }
         }
         public void withdraw(double amount)
         {
             if (amount <=balance )
             {
-                {
+                
                     balance -= amount;
-                }
+               
             }
+            Console.WriteLine("remaining balance is:" + balance); 
         }
+        
     }
     internal class Program
     {
         static void Main(string[] args)
         {
-            bankaccount obj = new bankaccount();
-            obj.display(999888666,10000);
+            bankaccount obj = new bankaccount(999888666,10000);
+            obj.display();
             obj.deposit(5000);
             obj.withdraw(2000);
 
